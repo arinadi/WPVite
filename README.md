@@ -4,7 +4,7 @@
 
 **Created by:** ATechAsync
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farinadi%2FWPVite&stores=[{"type":"neon"},{"type":"blob"}]&env=DATABASE_URL)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farinadi%2FWPVite&env=DATABASE_URL&envDescription=Database%20connection%20string%20from%20Neon&envLink=https%3A%2F%2Fneon.tech&project-name=wpvite&repository-name=wpvite)
 
 ## Prerequisites
 
@@ -14,7 +14,11 @@
 | **[Vercel Blob](https://vercel.com/docs/storage/vercel-blob)** | ✅ Mandatory | File storage for media uploads |
 | **[Vercel](https://vercel.com)** | ✅ Mandatory | Hosting & serverless functions |
 
-> Click the **Deploy** button above to automatically provision Neon database and Vercel Blob storage during setup.
+> **Setup Steps:**
+> 1. Click the **Deploy** button above
+> 2. Create a [Neon](https://neon.tech) database and copy the connection string
+> 3. Paste the connection string as `DATABASE_URL` environment variable during deployment
+> 4. [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) will be automatically available in your project
 
 ## Core Philosophy
 
