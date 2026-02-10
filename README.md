@@ -4,6 +4,18 @@
 
 **Created by:** ATechAsync
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farinadi%2FWPVite&stores=[{"type":"neon"},{"type":"blob"}]&env=DATABASE_URL)
+
+## Prerequisites
+
+| Service | Required | Description |
+|---|---|---|
+| **[Neon](https://neon.tech)** | ✅ Mandatory | Serverless PostgreSQL database |
+| **[Vercel Blob](https://vercel.com/docs/storage/vercel-blob)** | ✅ Mandatory | File storage for media uploads |
+| **[Vercel](https://vercel.com)** | ✅ Mandatory | Hosting & serverless functions |
+
+> Click the **Deploy** button above to automatically provision Neon database and Vercel Blob storage during setup.
+
 ## Core Philosophy
 
 > *"Admin is an App (SPA), Public is a Document (SSR/SEO)."*
