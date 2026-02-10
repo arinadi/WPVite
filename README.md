@@ -4,8 +4,6 @@
 
 **Created by:** ATechAsync
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farinadi%2FWPVite&env=DATABASE_URL&envDescription=Database%20connection%20string%20from%20Neon&envLink=https%3A%2F%2Fneon.tech&project-name=wpvite&repository-name=wpvite)
-
 ## Quick Deploy
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farinadi%2FWPVite&env=DATABASE_URL&envDescription=Will%20be%20auto-populated%20by%20Vercel%20Postgres&project-name=wpvite&repository-name=wpvite&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
