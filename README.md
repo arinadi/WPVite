@@ -6,19 +6,17 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farinadi%2FWPVite&env=DATABASE_URL&envDescription=Database%20connection%20string%20from%20Neon&envLink=https%3A%2F%2Fneon.tech&project-name=wpvite&repository-name=wpvite)
 
-## Prerequisites
+## Quick Deploy
 
-| Service | Required | Description |
-|---|---|---|
-| **[Neon](https://neon.tech)** | ✅ Mandatory | Serverless PostgreSQL database |
-| **[Vercel Blob](https://vercel.com/docs/storage/vercel-blob)** | ✅ Mandatory | File storage for media uploads |
-| **[Vercel](https://vercel.com)** | ✅ Mandatory | Hosting & serverless functions |
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farinadi%2FWPVite&env=DATABASE_URL&envDescription=Will%20be%20auto-populated%20by%20Vercel%20Postgres&project-name=wpvite&repository-name=wpvite&stores=%5B%7B%22type%22%3A%22postgres%22%7D%2C%7B%22type%22%3A%22blob%22%7D%5D)
 
-> **Setup Steps:**
-> 1. Click the **Deploy** button above
-> 2. Create a [Neon](https://neon.tech) database and copy the connection string
-> 3. Paste the connection string as `DATABASE_URL` environment variable during deployment
-> 4. [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) will be automatically available in your project
+**What happens when you click Deploy:**
+1. ✅ **Vercel Postgres** database is automatically created
+2. ✅ **Vercel Blob** storage is automatically enabled  
+3. ✅ `DATABASE_URL` environment variable is auto-populated
+4. 🚀 Your WPVite instance is deployed and ready!
+
+> **Note:** After deployment, run database migrations with `npm run db:generate && npm run db:migrate`
 
 ## Core Philosophy
 
@@ -37,7 +35,7 @@
 |---|---|
 | Runtime | Node.js (Vercel Serverless Functions) |
 | Bundler | Vite + TypeScript |
-| Database | Neon (Serverless PostgreSQL) |
+| Database | Vercel Postgres (PostgreSQL) |
 | ORM | Drizzle ORM |
 | Frontend | React 18+ / Tailwind CSS |
 | Editor | BlockNote (TipTap-based) |
