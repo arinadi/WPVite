@@ -8,6 +8,12 @@
         "verbatimModuleSyntax": true,
         "moduleDetection": "force",
         "noEmit": true,
+        "jsx": "react-jsx",
+        "lib": [
+            "ES2022",
+            "DOM",
+            "DOM.Iterable"
+        ],
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
