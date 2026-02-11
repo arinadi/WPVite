@@ -33,7 +33,7 @@ export const mediaController = {
                     total,
                     totalPages: Math.ceil(total / Number(limit)),
                 },
-            });
+            } as any);
         } catch (error) {
             console.error('Get media error:', error);
             return res.status(500).json({ error: 'Failed to fetch media' });

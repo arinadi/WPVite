@@ -4,7 +4,7 @@ import { drizzle } from 'drizzle-orm/neon-http';
 import { sql } from 'drizzle-orm';
 import { users, options } from '../db/schema.js';
 
-import type { AuthenticatedRequest } from '../lib/withAuth';
+import type { AuthenticatedRequest } from '../lib/withAuth.js';
 
 const sqlConn = neon(process.env.DATABASE_URL!);
 const db = drizzle(sqlConn);
@@ -35,7 +35,7 @@ export const setupController = {
                 { key: 'site_title', value: siteTitle },
                 { key: 'tagline', value: tagline || '' },
                 { key: 'site_logo', value: '' },
-            ]);
+            ] as any);
 
             return res.status(200).json({ success: true });
         } catch (error) {

@@ -27,14 +27,15 @@ export const usersController = {
             return res.status(403).json({ error: 'Forbidden' });
         }
         try {
-            const { email, name, role } = req.body;
+            const { email, name } = req.body;
             if (!email) return res.status(400).json({ error: 'Email is required' });
 
             const newUser = await db.insert(users).values({
                 email,
                 name: name || '',
-                role: role || 'author',
-            }).returning();
+                role: 'editor', // Default role
+            } as any)
+                .returning();
 
             return res.status(201).json({ data: newUser[0] });
         } catch (error) {

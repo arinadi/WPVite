@@ -82,7 +82,7 @@ export const postsController = {
                     featuredImage: featuredImage || null,
                     allowComments: allowComments ?? true,
                     authorId: req.user!.id,
-                })
+                } as any)
                 .returning();
 
             return res.status(201).json({ data: newPost[0] });

@@ -116,7 +116,7 @@ export const authController = {
                         name: userInfo.name,
                         avatarUrl: userInfo.picture,
                         role: 'super_admin',
-                    })
+                    } as any)
                     .returning();
 
                 user = newUser;
