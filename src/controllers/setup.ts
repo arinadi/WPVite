@@ -1,0 +1,45 @@
+import type { VercelResponse } from '@vercel/node';
+import { neon } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-http';
+import { sql } from 'drizzle-orm';
+import { users, options } from '../db/schema';
+import type { AuthenticatedRequest } from '../lib/withAuth';
+
+const sqlConn = neon(process.env.DATABASE_URL!);
+const db = drizzle(sqlConn);
+
+export const setupController = {
+    async setup(req: AuthenticatedRequest, res: VercelResponse) {
+        try {
+            const userCountResult = await db.select({ count: sql<number>`count(*)` }).from(users);
+            const userCount = Number(userCountResult[0]?.count);
+
+            if (userCount !== 1) {
+                return res.status(403).json({ error: 'Setup can only be run when there is exactly one user (the owner).' });
+            }
+
+            const titleOption = await db.select().from(options).where(sql`key = 'site_title'`).limit(1);
+
+            if (titleOption.length > 0) {
+                return res.status(403).json({ error: 'Setup has already been completed.' });
+            }
+
+            const { siteTitle, tagline } = req.body;
+
+            if (!siteTitle) {
+                return res.status(400).json({ error: 'Site title is required' });
+            }
+
+            await db.insert(options).values([
+                { key: 'site_title', value: siteTitle },
+                { key: 'tagline', value: tagline || '' },
+                { key: 'site_logo', value: '' },
+            ]);
+
+            return res.status(200).json({ success: true });
+        } catch (error) {
+            console.error('Setup error:', error);
+            return res.status(500).json({ error: 'Internal server error during setup' });
+        }
+    }
+};
