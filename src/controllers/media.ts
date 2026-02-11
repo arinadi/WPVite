@@ -53,7 +53,7 @@ export const mediaController = {
                 url: blob.url,
                 type: blob.contentType,
                 altText: '',
-            }).returning();
+            } as any).returning();
 
             return res.status(201).json({ data: newMedia[0] });
         } catch (error) {

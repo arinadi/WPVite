@@ -27,7 +27,7 @@ export const optionsController = {
             const updates = req.body;
             const updatePromises = Object.entries(updates).map(([key, value]) => {
                 return db.insert(options)
-                    .values({ key, value: String(value) })
+                    .values({ key, value: String(value) } as any)
                     .onConflictDoUpdate({ target: options.key, set: { value: String(value) } });
             });
             await Promise.all(updatePromises);
