@@ -8,7 +8,7 @@ export interface AuthenticatedRequest extends VercelRequest {
 export type AuthHandler = (
   req: AuthenticatedRequest,
   res: VercelResponse
-) => Promise<void> | void;
+) => Promise<any> | any;
 
 /**
  * Middleware to protect API endpoints with authentication

@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 // import { ThemeProvider } from '@/themes/default';
 import type { RouteType } from './router';
 
-// We need a way to pass data to the theme
+// Verified tsconfig includes api now. the theme
 // In a real WP world, we query DB based on route, get data, then pass to theme.
 
 export async function renderPage(

@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
-import { eq, sql } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 import { posts, options, users } from '../src/db/schema';
 import { matchRoute } from '../src/lib/router';
 import { renderPage } from '../src/lib/renderer';
@@ -44,9 +44,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         .leftJoin(users, eq(posts.authorId, users.id))
         .where(eq(posts.status, 'published')) // Only published
         .limit(10); // Simple pagination later
-      
+
       data = { posts: latestPosts };
-    } 
+    }
     else if (type === 'post') {
       const slug = params.slug;
       const post = await db
@@ -68,7 +68,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         // 404
         return res.status(404).send('Not Found'); // Needs pretty 404
       }
-      
+
       data = { post: post[0] };
     }
     else if (type === '404') {
