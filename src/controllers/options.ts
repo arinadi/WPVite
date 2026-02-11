@@ -28,7 +28,7 @@ export const optionsController = {
             const updatePromises = Object.entries(updates).map(([key, value]) => {
                 return db.insert(options)
                     .values({ key, value: String(value) } as any)
-                    .onConflictDoUpdate({ target: options.key, set: { value: String(value) } });
+                    .onConflictDoUpdate({ target: options.key, set: { value: String(value) } as any });
             });
             await Promise.all(updatePromises);
             return res.status(200).json({ success: true });
