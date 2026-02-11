@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
-import { options } from '../db/schema';
-import type { AuthenticatedRequest } from '../lib/withAuth';
+import { options } from '../db/schema.js';
+import type { AuthenticatedRequest } from '../lib/withAuth.js';
 
 const sqlConn = neon(process.env.DATABASE_URL!);
 const db = drizzle(sqlConn);

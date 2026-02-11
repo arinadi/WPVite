@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { verifyToken, getAuthToken, type UserPayload } from './auth';
+import { verifyToken, getAuthToken, type UserPayload } from './auth.js';
 
 export interface AuthenticatedRequest extends VercelRequest {
   user?: UserPayload;

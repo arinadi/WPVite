@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 export default function App({ type, data, siteOptions }: any) {
   const { site_title, tagline, site_logo } = siteOptions || {};
@@ -9,7 +9,7 @@ export default function App({ type, data, siteOptions }: any) {
       <Helmet>
         <title>{site_title ? `${site_title} - ${tagline}` : 'WPVite'}</title>
         <meta name="description" content={tagline || 'A WPVite Site'} />
-        
+
         {/* OpenGraph */}
         <meta property="og:title" content={site_title || 'WPVite'} />
         <meta property="og:description" content={tagline || 'A WPVite Site'} />
@@ -76,9 +76,9 @@ export function Home({ posts }: any) {
           <Link to={`/p/${post.slug}`} className="block space-y-4">
             {post.featuredImage && (
               <div className="aspect-[2/1] bg-gray-100 rounded-2xl overflow-hidden">
-                <img 
-                  src={post.featuredImage} 
-                  alt={post.title} 
+                <img
+                  src={post.featuredImage}
+                  alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -107,12 +107,12 @@ export function SinglePost({ post }: any) {
       <Helmet>
         <title>{post.title}</title>
         <meta name="description" content={post.excerpt || post.title} />
-        
+
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt || post.title} />
         <meta property="og:type" content="article" />
         {post.featuredImage && <meta property="og:image" content={post.featuredImage} />}
-        
+
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt || post.title} />
         {post.featuredImage && <meta name="twitter:image" content={post.featuredImage} />}
@@ -124,22 +124,22 @@ export function SinglePost({ post }: any) {
             {post.title}
           </h1>
           <div className="flex items-center justify-center gap-3 text-gray-500">
-             {post.authorAvatar && <img src={post.authorAvatar} className="w-8 h-8 rounded-full" />}
-             <span className="font-medium text-gray-900">{post.authorName}</span>
-             <span>&bull;</span>
-             <span>{new Date(post.updatedAt).toLocaleDateString()}</span>
+            {post.authorAvatar && <img src={post.authorAvatar} className="w-8 h-8 rounded-full" />}
+            <span className="font-medium text-gray-900">{post.authorName}</span>
+            <span>&bull;</span>
+            <span>{new Date(post.updatedAt).toLocaleDateString()}</span>
           </div>
         </div>
-        
+
         {post.featuredImage && (
           <div className="aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
-             <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover" />
+            <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover" />
           </div>
         )}
       </header>
 
       <div className="prose prose-lg prose-blue mx-auto">
-         <BlockRenderer blocks={post.content} />
+        <BlockRenderer blocks={post.content} />
       </div>
     </article>
   );
@@ -165,8 +165,8 @@ function BlockRenderer({ blocks }: { blocks: any[] }) {
           return <p key={block.id}>{renderInline(block.content)}</p>;
         }
         if (block.type === 'heading') {
-           const Tag = `h${Math.min(block.props.level, 3)}` as any;
-           return <Tag key={block.id}>{renderInline(block.content)}</Tag>;
+          const Tag = `h${Math.min(block.props.level, 3)}` as any;
+          return <Tag key={block.id}>{renderInline(block.content)}</Tag>;
         }
         if (block.type === 'image') {
           return (

@@ -2,8 +2,9 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
 import { eq, desc, sql } from 'drizzle-orm';
-import { posts, users } from '../db/schema';
-import slugify from 'slugify';
+import { posts, users } from '../db/schema.js';
+import * as slugifyPkg from 'slugify';
+const slugify = (slugifyPkg as any).default || slugifyPkg;
 
 const sqlConn = neon(process.env.DATABASE_URL!);
 const db = drizzle(sqlConn);

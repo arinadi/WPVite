@@ -2,8 +2,8 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
 import { eq, sql } from 'drizzle-orm';
-import { users } from '../../src/db/schema';
-import { generateToken, setAuthCookie, clearAuthCookie } from '../../src/lib/auth';
+import { users } from '../db/schema.js';
+import { generateToken, setAuthCookie, clearAuthCookie } from '../lib/auth.js';
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID!;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET!;

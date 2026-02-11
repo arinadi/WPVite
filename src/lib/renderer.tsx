@@ -1,9 +1,9 @@
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { HelmetProvider } from 'react-helmet-async';
 // ThemeProvider will be handled inside the Theme App or not needed if we just pass props
 // import { ThemeProvider } from '@/themes/default';
-import type { RouteType } from './router';
+import type { RouteType } from './router.js';
 
 // Verified tsconfig includes api now. the theme
 // In a real WP world, we query DB based on route, get data, then pass to theme.
@@ -15,17 +15,21 @@ export async function renderPage(
   siteOptions: any
 ) {
   // 1. Load Theme Component (Static import for now, dynamic later if needed)
-  const ThemeApp = (await import('@/themes/default/App')).default;
+  const ThemeApp = (await import('../themes/default/App.js')).default;
+
+  const helmetContext = {};
 
   // 2. Render to string
   const appHtml = renderToString(
-    <StaticRouter location={url}>
-      <ThemeApp type={type} data={data} siteOptions={siteOptions} />
-    </StaticRouter>
+    <HelmetProvider context={helmetContext}>
+      <StaticRouter location={url}>
+        <ThemeApp type={type} data={data} siteOptions={siteOptions} />
+      </StaticRouter>
+    </HelmetProvider>
   );
 
   // 3. Get Head tags
-  const helmet = Helmet.renderStatic();
+  const { helmet } = helmetContext as any;
 
   // 4. Construct full HTML
   return `

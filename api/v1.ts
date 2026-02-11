@@ -1,12 +1,12 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Router } from '../src/lib/api-router';
-import { authController } from '../src/controllers/auth';
-import { mediaController } from '../src/controllers/media';
-import { postsController } from '../src/controllers/posts';
-import { usersController } from '../src/controllers/users';
-import { optionsController } from '../src/controllers/options';
-import { setupController } from '../src/controllers/setup';
-import { withAuth } from '../src/lib/withAuth';
+import { Router } from '../src/lib/api-router.js';
+import { authController } from '../src/controllers/auth.js';
+import { mediaController } from '../src/controllers/media.js';
+import { postsController } from '../src/controllers/posts.js';
+import { usersController } from '../src/controllers/users.js';
+import { optionsController } from '../src/controllers/options.js';
+import { setupController } from '../src/controllers/setup.js';
+import { withAuth } from '../src/lib/withAuth.js';
 
 const router = new Router();
 

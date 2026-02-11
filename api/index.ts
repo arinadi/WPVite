@@ -2,9 +2,9 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
 import { eq } from 'drizzle-orm';
-import { posts, options, users } from '../src/db/schema';
-import { matchRoute } from '../src/lib/router';
-import { renderPage } from '../src/lib/renderer';
+import { posts, options, users } from '../src/db/schema.js';
+import { matchRoute } from '../src/lib/router.js';
+import { renderPage } from '../src/lib/renderer.js';
 
 const sqlConn = neon(process.env.DATABASE_URL!);
 const db = drizzle(sqlConn);
