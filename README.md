@@ -35,11 +35,13 @@
 | Bundler | Vite + TypeScript |
 | Database | Vercel Postgres (PostgreSQL) |
 | ORM | Drizzle ORM |
-| Frontend | React 18+ / Tailwind CSS |
+| Frontend | React 19+ / Tailwind CSS / React Helmet Async |
 | Editor | BlockNote (TipTap-based) |
 | Auth | Google OAuth 2.0 (JWT / HttpOnly Cookie) |
 | Storage | Vercel Blob |
 | State | TanStack Query v5 |
+| Build | Vite + TypeScript (Strict Mode) |
+| Deployment | Vercel (with `.npmrc` for legacy peer deps) |
 
 ## Features
 
@@ -67,10 +69,10 @@
 
 ## Project Structure
 
-```
 /
 ├── api/                  # Vercel Serverless Functions
 │   ├── index.ts          # Public SSR Handler
+│   ├── tsconfig.json     # API-specific TS Config (JSX enabled)
 │   ├── auth/             # OAuth Endpoints
 │   └── trpc/             # REST API for Admin
 ├── src/
@@ -86,5 +88,7 @@
 ├── public/               # Static Assets
 ├── Plan/                 # Planning Documents
 ├── vercel.json           # Vercel Config
-└── vite.config.ts        # Vite Config
+├── vite.config.ts        # Vite Config
+├── .npmrc                # NPM Config (legacy-peer-deps)
+└── .agent/               # Agent Workflows
 ```
